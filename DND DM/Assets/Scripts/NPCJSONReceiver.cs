@@ -4,15 +4,14 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class NPCJSONReceiver
+public class StoryJSONReceiver
 {
 	public string animation_name;
 	public string reply_to_player;
 	public string npcName;
-	public bool optionMode;
-	public bool isFinishedLore;
+	public string chatType;
+	public Growth[] growth;
 	public DNDOption[] options;
-	public ChangeAttribute changeAttribute;
 }
 
 [Serializable]
@@ -24,8 +23,31 @@ public class DNDOption
 }
 
 [Serializable]
-public class ChangeAttribute
+public class DiceCheckJSONReceiver
+{
+	public string result;
+}
+
+public class PlayerDiceInput
 {
 	public string attribute;
-	public int changeAmount;
+	public string inputAmount;
+	public string requiredAmount;
+}
+
+[Serializable]
+public class Growth
+{
+	public string attribute;
+	public int amount;
+}
+
+[Serializable]
+public class GuideJSONReceiver
+{
+	public string animation_name;
+	public string reply_to_player;
+	public string npcName;
+	public bool isPanelOn;
+	public string chatType;
 }

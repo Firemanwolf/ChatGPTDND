@@ -7,9 +7,8 @@ using TMPro;
 public class AttributeUI : MonoBehaviour
 {
     public string attributeName;
-    [HideInInspector] public int amount;
     [SerializeField] private GameObject[] buttons;
-    [SerializeField] TextMeshProUGUI amountText;
+    public TextMeshProUGUI amountText;
     [SerializeField] TextMeshProUGUI nameText;
 
     private void Awake()
@@ -18,28 +17,22 @@ public class AttributeUI : MonoBehaviour
     }
     public void Increment()
     {
-        if (PlayerManager.instance.TotalPoints > 0 && amount < 10 && PlayerManager.instance.totalPointsUI.gameObject.activeSelf) 
+        if (PlayerManager.instance.TotalPoints > 0 && int.Parse(amountText.text) < 10 && PlayerManager.instance.totalPointsUI.gameObject.activeSelf) 
         {
             PlayerManager.instance.Decrement();
-            amount++;
-            amountText.text = amount.ToString();
+            PlayerManager.instance.characters[attributeName]++;
+            amountText.text = PlayerManager.instance.characters[attributeName].ToString();
         }
     }
 
     public void Decrement()
     {
-        if (PlayerManager.instance.TotalPoints < 60 && amount > 0 && PlayerManager.instance.totalPointsUI.gameObject.activeSelf) 
+        if (PlayerManager.instance.TotalPoints < 60 && int.Parse(amountText.text) > 0 && PlayerManager.instance.totalPointsUI.gameObject.activeSelf) 
         {
             PlayerManager.instance.Increment();
-            amount--;
-            amountText.text = amount.ToString();
+            PlayerManager.instance.characters[attributeName]--;
+            amountText.text = PlayerManager.instance.characters[attributeName].ToString();
         }
-    }
-
-    public void ChangeAmount(int amount)
-    {
-        amount = Mathf.Clamp(amount+amount,0,10);
-        amountText.text = amount.ToString();
     }
 
     public void HideButtons()

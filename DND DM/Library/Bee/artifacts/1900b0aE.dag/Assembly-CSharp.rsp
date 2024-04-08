@@ -380,6 +380,7 @@
 "Assets/ChatGPT/WebRequestClasses/GPTResError.cs"
 "Assets/ChatGPT/WebRequestClasses/Message.cs"
 "Assets/Latifa V2 3D - Anime Style/Demo/Scripts/UIManager.cs"
+"Assets/Plugin/SimpleJSON.cs"
 "Assets/Scripts/AttributeUI.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/NPCController.cs"

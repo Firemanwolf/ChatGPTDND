@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2652385035902123143}
   - component: {fileID: 3013265258299732070}
   - component: {fileID: 5420239007578732172}
+  - component: {fileID: 8424753818783565713}
   m_Layer: 5
   m_Name: OptionButton
   m_TagString: Untagged
@@ -122,7 +123,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3013265258299732070}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8424753818783565713}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: SubmitChatMessage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8424753818783565713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298792948316745893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900e4d80503ad144b5ae7c78eff66cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentText: {fileID: 1761786060452159282}
+  attributeText: {fileID: 4874790593220653426}
+  amountText: {fileID: 49788651469916363}
 --- !u!1 &1623944352700004880
 GameObject:
   m_ObjectHideFlags: 0

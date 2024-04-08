@@ -33,6 +33,11 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
         }
         totalPointsUI.text = totalPoints.ToString();
+
+        foreach (AttributeUI attribute in attributes)
+        {
+            characters.Add(attribute.attributeName, 0);
+        }
     }
 
     public void Increment()
@@ -47,29 +52,26 @@ public class PlayerManager : MonoBehaviour
         totalPointsUI.text = totalPoints.ToString();
     }
 
-
     public void Init()
     {
         foreach (AttributeUI attribute in attributes)
         {
-            characters.Add(attribute.attributeName, attribute.amount);
             attribute.HideButtons();
         }
         startButton.SetActive(false);
         totalPointsUI.gameObject.SetActive(false);
+        GameManager.instance.GPTs[1].SendToChatGPT("{\"player_said\":\"" + "I've finished establishing my character" + "}");
+        GameManager.instance.chatBox.SetActive(true);
     }
 
-    public void RefreshStats()
+    public void RefreshStats(Growth target)
     {
-        foreach (KeyValuePair<string,int> character in characters)
+        foreach (AttributeUI attribute in attributes)
         {
-            foreach (AttributeUI attribute in attributes)
+            if(attribute.attributeName == target.attribute)
             {
-                if (character.Key.Equals(attribute.attributeName))
-                {
-                    attribute.ChangeAmount(character.Value);
-                    break;
-                }
+                characters[attribute.attributeName] = Mathf.Clamp(target.amount + target.amount, 0, 10);
+                attribute.amountText.text = characters[target.attribute].ToString();
             }
         }
     }

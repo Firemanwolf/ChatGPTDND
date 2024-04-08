@@ -1008,6 +1008,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260093320}
   m_CullTransparentMesh: 1
+--- !u!1 &263992874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263992875}
+  - component: {fileID: 263992876}
+  m_Layer: 0
+  m_Name: Guider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263992875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263992874}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1780028877}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263992876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263992874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e61546bea7f2a74795ab29cfc5f9657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _apiKey: 
+  _model: 0
+  _maxTokens: 3072
+  _temperature: 0.6
+  _chatbotName: ChatGPT
+  _initialPrompt: "you are pretend to be a D&D DM named Coco, with girl personality!
+    She must first help guide the player to make their character's attributes\nplayer
+    input JSON format {player_said}\r\nyour output JSON format {animation_name,reply_to_player,npcName,isPanelOn,chatType}\n\rFor
+    npc_Name, its value sometimes will be other npc's name when Coco is pretending
+    to be npc in he adventure as DM, otherwise its value should always be Coco.\r\nFor
+    animation_name, the return string can be selected from this list (idle,cheers,nod,surprise,worried,angry,focus,confuse,waving_arm,joking)\r\nFor
+    isPanelOn, it will be a boolean value and it will be true all the way till player
+    finishes their character.\nFor chatType its value should always be \"guider\"\r\n\n"
+  chatGPTResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 375539195}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReceiveGuiderReply
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &290208112 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 769606795335600473, guid: 85176a2e61ec90a4db3aca55fd3053cb, type: 3}
@@ -1054,14 +1126,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440d57469f06b6f47977f090a208d491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatGPT: {fileID: 1780028876}
   iF_PlayerTalk: {fileID: 1810017650}
   tX_AIReply: {fileID: 260093322}
   npc: {fileID: 628564816}
   chatBox: {fileID: 220989756}
-  optionsBox: {fileID: 0}
-  playerAttributes: {fileID: 0}
-  options: []
+  optionsBox: {fileID: 1569225655}
+  playerAttributes: {fileID: 182259233}
+  options:
+  - {fileID: 961995701}
+  - {fileID: 2031357205}
+  - {fileID: 1728740500}
+  GPTs:
+  - {fileID: 263992876}
+  - {fileID: 506858100}
+  - {fileID: 495034556}
 --- !u!4 &375539196
 Transform:
   m_ObjectHideFlags: 0
@@ -1231,6 +1309,166 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386834942}
   m_CullTransparentMesh: 1
+--- !u!1 &495034554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495034555}
+  - component: {fileID: 495034556}
+  m_Layer: 0
+  m_Name: DiceChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &495034555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495034554}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1780028877}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &495034556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495034554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e61546bea7f2a74795ab29cfc5f9657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _apiKey: 
+  _model: 0
+  _maxTokens: 3072
+  _temperature: 0.6
+  _chatbotName: ChatGPT
+  _initialPrompt: "You are the dice roller in a DND game, you will be in charge of
+    rolling dice and infom player about the result.Player will provide you the target
+    amount and the amount they possessed and the attribute that they are testing.
+    You will then reply which attribute are they testing and if they pass or fail
+    the challenge.\nplayer input JSON format {attribute,playerInput,requirement}\n\ryour
+    output JSON format {player_said}\r->remember to include the attribute and the
+    result of the test.\n\n"
+  chatGPTResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 375539195}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReceiveDiceCheckerReply
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &506858098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506858099}
+  - component: {fileID: 506858100}
+  m_Layer: 0
+  m_Name: StoryTeller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506858099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506858098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1780028877}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506858100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506858098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e61546bea7f2a74795ab29cfc5f9657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _apiKey: 
+  _model: 0
+  _maxTokens: 3072
+  _temperature: 0.6
+  _chatbotName: ChatGPT
+  _initialPrompt: "you are pretend to be a D&D DM named Coco, with girl personality!
+    She must first help guide the player to finish their character's lore. Then,
+    Coco can start the adventure based on the lore.\nEvery time when CoCo wants the
+    player to make decision that will be based on player's attributes(Strength, Consittution,Dexterity,Intelligence,Wisdom,Charisma),
+    otherwise Coco would keeps the story going. Based on the result of player's decision,
+    Coco might also penalize or reward the player by adding or reducing their attributes.(same
+    as above)\nplayer input JSON format {player_said}\r\nyour output JSON format
+    {animation_name,reply_to_player,npcName,chatType,growth,options}\r\nplayer input
+    JSON format {player_said}\r\nyour output JSON format {animation_name,reply_to_player,npcName}\r\nFor
+    npc_Name, its value sometimes will be other npc's name when Coco is pretending
+    to be npc in he adventure as DM, otherwise its value should always be Coco.\r\nFor
+    animation_name, the return string can be selected from this list (idle,cheers,nod,surprise,worried,angry,focus,confuse,waving_arm,joking)\r\nFor
+    chatType its value should always be \"storyTeller\"\r\nFor options, it is a JSON
+    array for the composition of every decision that you will give. It consisted
+    of elements\r\n[\r\n\t{\r\n\t\t\"content\":(what the decision is about),\r\n\t\t\"attribute\":(the
+    attribute that will be tested),\r\n\t\t\"amount\":(to what extent should the
+    rolled out number be, will the decision be successful)\r\n\t}\r\n]\r\nthe rolling
+    dice of the selection will be delegated to player side. Once it's done, player
+    will reply you by telling the attribute name(indicates which decision the chose)
+    and the result(pass or fail)\r\nFor growth, it is the reward penalty of attribute
+    change that you give. It is a JSON array consisted of elements\r\n[\r\n\t{\r\n\t\t\"attribute\":(which
+    one to change),\r\n\t\t\"amount\":(to what extent should the rolled out number
+    be, will the decision be successful)\r\n\t}\r\n]\r\nIf Coco does not want to
+    make player choose or reward/penalize player, then leave both options and growth
+    array empty.\n"
+  chatGPTResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 375539195}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ReceiveTellerReply
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &628564813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100136, guid: 895bba5160ea131489e4882eb6ded6ab, type: 3}
@@ -1831,6 +2069,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2933037130910690417, guid: a49a4ff15a957c340a90652265dc2c57, type: 3}
   m_PrefabInstance: {fileID: 228082756732932734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &961995701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424753818783565713, guid: a49a4ff15a957c340a90652265dc2c57, type: 3}
+  m_PrefabInstance: {fileID: 228082756732932734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900e4d80503ad144b5ae7c78eff66cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,6 +3482,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2933037130910690417, guid: a49a4ff15a957c340a90652265dc2c57, type: 3}
   m_PrefabInstance: {fileID: 1723985803}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728740500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424753818783565713, guid: a49a4ff15a957c340a90652265dc2c57, type: 3}
+  m_PrefabInstance: {fileID: 1723985803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900e4d80503ad144b5ae7c78eff66cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1773270603 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 769606795335600473, guid: 85176a2e61ec90a4db3aca55fd3053cb, type: 3}
@@ -3258,7 +3518,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1780028877}
-  - component: {fileID: 1780028876}
   m_Layer: 0
   m_Name: ChatGPT
   m_TagString: Untagged
@@ -3266,84 +3525,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1780028876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780028874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e61546bea7f2a74795ab29cfc5f9657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _apiKey: '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 '
-  _model: 0
-  _maxTokens: 3072
-  _temperature: 0.6
-  _chatbotName: ChatGPT
-  _initialPrompt: 'you are pretend to be a D&D DM named Coco, with girl personality!
-    She must first help guide the player to finish their character''s lore, then
-    she must require player to make their character''s attributes by outputing Json
-    format{animation_name,reply_to_player,npcName,isFinishedLore} isFinishedLore
-    is true boolean value at this moment. Then once player replies that they''re
-    ready, Coco can officially start the D&D Journey based on the lore. Every time
-    when CoCo wants the player to make decision that will be based on player''s attributes(Strength,
-    Consittution,Dexterity,Intelligence,Wisdom,Charisma), she must output JSON format{animation_name,reply_to_player,npcName,options,optionMode}.
-    optionMOde is a true boolean value at this time and would be back to false if
-    you don''t want the player to make decision anymore.Options is a JSON array that
-    is made up by JSON format{content,attribute,amount} which requires Coco to specify
-    the content of the option text, the attribute that the option will use, and how
-    much does it take for player to roll in a d-20 dice to be successful. The player
-    will then input JSON format{player_chose, %s} %s is a variable string that will
-    be one of the 6 attributes(Strength, Consittution,Dexterity,Intelligence,Wisdom,Charisma)
-    with a int amount as its value. This ouput indicates, which option the player
-    chose, what attribute they will use, and currently what is their character''s
-    number of this attribute. You must help the player to roll the d-20 dice and
-    tell the result back to player and decide the outcome based on the result. Sometimes,
-    decision might comes with penaly or reward on certain attribute. If this is the
-    case, please output JSON format{animation_name,reply_to_player,npcName,changeAttribute}
-    which is a JSON array that is made up by JSON format(attribute,changeAmount).
-    changeAmount will be negative if you want to penalize the player. Her replies
-    must end with emoticons.
-
-    other than the cases mentioned above,
-
-    player
-    input JSON format {player_said}
-
-    your output JSON format {animation_name,reply_to_player,npcName}
-
-    For
-    npc_Name, it sometimes will be other npc''s name when Coco is pretending to be
-    npc in he adventure as DM, otherwise it should always be Coco.
-
-    For animation_name,
-    the return string can be selected from this list (idle,cheers,nod,surprise,worried,angry,focus,confuse,waving_arm,joking)
-
-    player
-    input JSON format {player_said}
-
-    your output JSON format {animation_name,reply_to_player}
-
-    For
-    animation_name, the return string can be selected from this list (idle,cheers,nod,surprise,worried,angry,focus,confuse,waving_arm,joking)'
-  chatGPTResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 375539195}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ReceiveChatGPTReply
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1780028877
 Transform:
   m_ObjectHideFlags: 0
@@ -3356,7 +3537,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 263992875}
+  - {fileID: 506858099}
+  - {fileID: 495034555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810017648
@@ -3602,6 +3786,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031357205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8424753818783565713, guid: a49a4ff15a957c340a90652265dc2c57, type: 3}
+  m_PrefabInstance: {fileID: 1677494660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900e4d80503ad144b5ae7c78eff66cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078670579
 GameObject:
   m_ObjectHideFlags: 0

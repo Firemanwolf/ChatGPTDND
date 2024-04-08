@@ -11,7 +11,6 @@ public class SelectButton : MonoBehaviour
 	[SerializeField] TextMeshProUGUI contentText;
 	[SerializeField] TextMeshProUGUI attributeText;
 	[SerializeField] TextMeshProUGUI amountText;
-	[SerializeField] ChatGPTConversation chatGPT;
 	public void OptionInit(DNDOption option)
     {
 		amountText.text = option.amount.ToString();
@@ -21,8 +20,9 @@ public class SelectButton : MonoBehaviour
 
     public void SubmitChatMessage()
     {
-		chatGPT.SendToChatGPT("{\"player_chose\":\"" + contentText.text + "\","
-			+ "\"Player " + attributeText.text +":" + "\"" + PlayerManager.instance.characters[attributeText.text]
+		GameManager.instance.GPTs[2].SendToChatGPT("{\"attribute\":" + "\""+ attributeText.text + "\"" + "," + "\"playerInput\":"
+			+ "\"" + PlayerManager.instance.characters[attributeText.text] + "\"" + ","
+			+ "\"requirement\":" + "\"" + amountText.text + "\""
 			+ "}") ;
     }
 }
